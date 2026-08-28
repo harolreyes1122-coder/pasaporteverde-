@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#1f6a4a">
+  <meta name="description" content="Pasaporte Verde Café: trazabilidad ambiental, social, de calidad, varietal y de mercado para café especial.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png">
+  <title>Pasaporte Verde Café</title>
+  <style>
+    :root{--bg:#f4f7f4;--card:#fff;--text:#18251f;--muted:#64736b;--line:#dce5df;--brand:#1f6a4a;--brand2:#e7f2eb;--good:#1f7a4e;--warn:#9a6b00;--bad:#a13b36;--shadow:0 8px 24px rgba(25,55,40,.08)}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:980px;margin:auto;padding:18px 14px 90px}.top{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}.brand small{color:var(--muted);display:block}.brand h1{margin:3px 0 4px;font-size:1.45rem}.brand p{margin:0;color:var(--muted);font-size:.92rem}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:var(--card);color:var(--text);padding:11px 14px;border-radius:12px;min-height:44px}.btn.primary{background:var(--brand);color:white;border-color:var(--brand)}.btn.soft{background:var(--brand2);color:var(--brand);border-color:#cfe2d6}.btn.danger{color:var(--bad)}
+    .tabs{display:flex;gap:8px;overflow:auto;padding:14px 0 10px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{white-space:nowrap;border:1px solid var(--line);background:var(--card);padding:10px 12px;border-radius:999px;color:var(--muted)}.tab.active{background:var(--brand2);border-color:#bfd7c8;color:var(--brand);font-weight:700}.panel{display:none}.panel.active{display:block}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.card+.card{margin-top:14px}.section-title{margin:0 0 4px;font-size:1.05rem}.section-sub{margin:0 0 16px;color:var(--muted);font-size:.9rem}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.field label,.label{display:block;font-size:.86rem;color:var(--muted);margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px 13px;color:var(--text);min-height:46px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:#8fbea1;box-shadow:0 0 0 3px rgba(31,106,74,.1)}.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.check{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}.check input{width:20px;height:20px}.nav{display:flex;justify-content:space-between;gap:10px;margin-top:16px}.nav .btn{min-width:120px}
+    .metric-main{font-size:2.5rem;font-weight:800;line-height:1}.metric-main small{font-size:1rem;color:var(--muted);font-weight:500}.meter{height:10px;border-radius:999px;background:#e9efeb;overflow:hidden;margin-top:12px}.meter>span{display:block;height:100%;width:0;background:var(--brand);transition:width .2s}.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.metric{border:1px solid var(--line);border-radius:12px;padding:11px}.metric span{font-size:.78rem;color:var(--muted);display:block}.metric strong{display:block;margin-top:4px;font-size:1.05rem}.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:.8rem;margin:4px 5px 0 0;background:#fff}.muted{color:var(--muted)}.notice{border:1px solid var(--line);background:#fbfcfb;border-radius:14px;padding:13px;font-size:.86rem;color:var(--muted)}
+    .market-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.market-card{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}.market-card h4{margin:0;font-size:.96rem}.market-card .big{font-size:1.45rem;font-weight:800;margin-top:8px}.market-card .local{margin-top:3px;color:var(--muted)}
+    .passport-head{background:linear-gradient(135deg,#e8f3ec,#fff);border:1px solid #cfe2d6;border-radius:18px;padding:20px}.passport-head small{color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.passport-head h2{margin:6px 0 4px}.passport-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}.passport-block{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}.passport-block h3{margin:0 0 10px;font-size:1rem}.rows{display:grid;gap:8px}.row{display:flex;justify-content:space-between;gap:12px;font-size:.9rem}.row span:first-child{color:var(--muted)}.status{font-weight:700}.status.good{color:var(--good)}.status.warn{color:var(--warn)}.status.bad{color:var(--bad)}
+    dialog{border:none;border-radius:18px;padding:0;max-width:680px;width:calc(100% - 24px);box-shadow:0 22px 60px rgba(0,0,0,.2)}dialog::backdrop{background:rgba(0,0,0,.35)}.dialog-head{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}.dialog-body{padding:16px 18px;max-height:65vh;overflow:auto}.saved-item{border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:10px;display:flex;justify-content:space-between;gap:10px;align-items:center}.saved-item strong{display:block}.saved-item small{color:var(--muted)}.saved-actions{display:flex;gap:7px;flex-wrap:wrap}.tiny{padding:8px 10px;min-height:36px;border-radius:10px}
+    .footer-note{margin-top:14px;font-size:.78rem;color:var(--muted)}.install-bar{display:none;margin-top:12px;border:1px solid #bfd7c8;background:var(--brand2);border-radius:14px;padding:12px;align-items:center;justify-content:space-between;gap:12px}.install-bar.show{display:flex}
+    @media(max-width:720px){.grid2,.grid3,.checks,.market-grid,.passport-grid{grid-template-columns:1fr}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.actions{width:100%}.actions .btn{flex:1}.app{padding:14px 12px 84px}.card{padding:15px}.passport-head{padding:17px}.row{align-items:flex-start}.nav .btn{min-width:0;flex:1}}
+
+    .qr-block{text-align:center}.qr-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:14px}.qr-image{width:min(360px,100%);aspect-ratio:1/1;object-fit:contain;border:1px solid var(--line);border-radius:16px;background:#fff;padding:10px}.qr-placeholder{width:min(360px,100%);aspect-ratio:1/1;border:1px dashed var(--line);border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;padding:24px;color:var(--muted)}.qr-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}.qr-data-preview{width:100%;max-height:180px;overflow:auto;text-align:left;white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;font-size:.78rem;color:var(--muted)}
+
+    .scan-hero{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:linear-gradient(135deg,#163f30,#236b4c);color:#fff;border-radius:20px;padding:17px 18px;margin-bottom:16px;box-shadow:var(--shadow)}
+    .scan-icon{width:54px;height:54px;border-radius:16px;background:rgba(255,255,255,.13);display:grid;place-items:center;font-size:1.7rem;border:1px solid rgba(255,255,255,.18)}
+    .scan-copy small{display:block;opacity:.78;font-size:.78rem}.scan-copy h2{margin:2px 0 3px;font-size:1.12rem}.scan-copy p{margin:0;opacity:.86;font-size:.85rem}.scan-hero .scan-btn{background:#fff;color:#17442f;border:0;font-weight:800;white-space:nowrap}
+    .scanner-body{padding:16px 18px}.scanner-stage{position:relative;background:#0c1511;border-radius:16px;overflow:hidden;min-height:280px;display:grid;place-items:center}.scanner-stage video{width:100%;max-height:62vh;display:block;object-fit:cover}.scan-frame{position:absolute;width:min(66%,300px);aspect-ratio:1;border:3px solid rgba(255,255,255,.92);border-radius:22px;box-shadow:0 0 0 999px rgba(0,0,0,.26);pointer-events:none}.scan-frame:before,.scan-frame:after{content:"";position:absolute;left:12%;right:12%;height:2px;background:rgba(255,255,255,.8)}.scan-frame:before{top:18%}.scan-frame:after{bottom:18%}.scanner-help{margin-top:12px;text-align:center;color:var(--muted);font-size:.84rem}.scanner-actions{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}.trace-card{border:1px solid var(--line);border-radius:16px;padding:15px;background:#fff;margin-bottom:12px}.trace-card h3{margin:0 0 10px;font-size:1rem}.trace-kicker{font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}.trace-title{font-size:1.35rem;font-weight:800;margin-top:3px}.trace-sub{color:var(--muted);font-size:.88rem;margin-top:3px}.trace-lines{display:grid;gap:8px;margin-top:10px}.trace-line{display:grid;grid-template-columns:minmax(115px,38%) 1fr;gap:10px;font-size:.88rem}.trace-line span:first-child{color:var(--muted)}.trace-raw{white-space:pre-wrap;font-size:.78rem;color:var(--muted);max-height:220px;overflow:auto;background:#fafcfb;border:1px solid var(--line);border-radius:12px;padding:12px}.buyer-badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:var(--brand2);color:var(--brand);font-weight:700;font-size:.76rem;padding:6px 9px;margin-top:9px}.scan-error{color:var(--bad);font-weight:700}.scan-success{color:var(--good);font-weight:700}
+    @media(max-width:720px){.scan-hero{grid-template-columns:auto 1fr}.scan-hero .scan-btn{grid-column:1/-1;width:100%}.scan-icon{width:48px;height:48px}.trace-line{grid-template-columns:1fr}.trace-line span:first-child{margin-bottom:-4px}.scanner-stage{min-height:250px}}
+
+
+
+    /* ===== Capa visual 2026: solo diseño, sin alterar datos ni funciones ===== */
+    body{
+      background:
+        radial-gradient(circle at 7% 4%, rgba(73,126,83,.13), transparent 24rem),
+        radial-gradient(circle at 96% 20%, rgba(119,75,45,.10), transparent 22rem),
+        linear-gradient(180deg,#f5f8f3 0%,#f2f5f0 48%,#f8f5ef 100%);
+      min-height:100vh;
+    }
+    body::before{
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.18;
+      background-image:
+        radial-gradient(ellipse at center, rgba(40,88,53,.13) 0 24%, transparent 25%),
+        radial-gradient(ellipse at center, rgba(104,60,36,.09) 0 23%, transparent 24%);
+      background-size:58px 34px,72px 42px;
+      background-position:0 0,31px 17px;
+      mask-image:linear-gradient(to bottom,black,transparent 88%);
+    }
+    .app{position:relative}
+    .app::before,.app::after{content:"";position:absolute;pointer-events:none;z-index:-1;border-radius:50%;filter:blur(1px)}
+    .app::before{width:210px;height:210px;right:-76px;top:150px;background:radial-gradient(circle,rgba(44,101,58,.12),rgba(44,101,58,0) 68%)}
+    .app::after{width:190px;height:190px;left:-82px;top:640px;background:radial-gradient(circle,rgba(112,70,43,.09),rgba(112,70,43,0) 68%)}
+
+    .top{
+      position:relative;overflow:hidden;
+      background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(242,248,241,.96));
+      border:1px solid #d8e4da;border-radius:22px;padding:18px;
+      box-shadow:0 14px 34px rgba(33,72,45,.08);
+    }
+    .top::after{
+      content:"";position:absolute;right:-26px;bottom:-38px;width:170px;height:150px;opacity:.12;pointer-events:none;
+      background:
+        radial-gradient(ellipse at 28% 58%,#2d6b42 0 13%,transparent 14%),
+        radial-gradient(ellipse at 53% 30%,#2d6b42 0 12%,transparent 13%),
+        radial-gradient(ellipse at 68% 70%,#6a3a25 0 9%,transparent 10%),
+        radial-gradient(ellipse at 82% 47%,#6a3a25 0 8%,transparent 9%);
+      transform:rotate(-15deg);
+    }
+    .brand h1{font-size:1.62rem;letter-spacing:-.02em;color:#173f2a;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+    .brand small{font-weight:700;letter-spacing:.025em;color:#446253}
+    .brand p{color:#3e5147}
+
+    .actions .btn{box-shadow:0 5px 12px rgba(31,62,43,.05);font-weight:700}
+    .btn{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+    @media(hover:hover) and (pointer:fine){.btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(31,62,43,.09);border-color:#bfd3c5}}
+    .btn.primary{background:linear-gradient(135deg,#1b5c3f,#2b7652);box-shadow:0 8px 18px rgba(31,106,74,.18)}
+    .btn.soft{background:linear-gradient(135deg,#edf6ef,#e2efe6)}
+
+    .tabs{padding:16px 2px 12px;gap:9px}
+    .tab{font-weight:650;box-shadow:0 3px 10px rgba(42,68,51,.045);transition:all .16s ease}
+    .tab.active{background:linear-gradient(135deg,#e8f4eb,#dfeee4);box-shadow:0 5px 14px rgba(31,106,74,.10);border-color:#a9ccb6}
+
+    .panel{position:relative}
+    .panel.active{animation:pvcFade .22s ease-out}
+    @keyframes pvcFade{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:none}}
+
+    .card{
+      position:relative;overflow:hidden;
+      border-color:#dbe4dd;
+      box-shadow:0 12px 30px rgba(32,69,44,.07);
+      background:linear-gradient(180deg,#ffffff 0%,#fff 74%,#fcfdfb 100%);
+    }
+    .card::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,#2d724e,#8aae70 58%,#b07b50);opacity:.82}
+    .card::after{content:"";position:absolute;right:-34px;top:-34px;width:116px;height:116px;border-radius:50%;background:radial-gradient(circle,rgba(50,111,66,.08),rgba(50,111,66,0) 70%);pointer-events:none}
+    .section-title{font-size:1.12rem;font-weight:800;letter-spacing:-.01em;color:#182c21}
+    .section-sub{color:#53665c}
+    .field label,.label{color:#263b30;font-weight:700}
+    .field input,.field select,.field textarea{border-color:#d7dfd9;box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 3px 8px rgba(36,69,47,.035)}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:#75aa89;box-shadow:0 0 0 4px rgba(31,106,74,.10),0 5px 15px rgba(31,106,74,.05)}
+
+    .checks{gap:11px}.check{position:relative;background:linear-gradient(135deg,#fff,#f9fcf9);border-color:#dae4dc;font-weight:600;box-shadow:0 3px 9px rgba(38,67,48,.035)}
+    .check::after{content:"";position:absolute;right:9px;top:9px;width:6px;height:6px;border-radius:50%;background:#7ba484;opacity:.35}
+
+    .notice{background:linear-gradient(135deg,#fbfdfb,#f6faf6);border-color:#d9e4dc;color:#405248}
+    .pill{box-shadow:0 3px 9px rgba(37,68,47,.035);border-color:#d7e1da;font-weight:650}
+
+    .metric-grid{gap:12px}.metric{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff,#fbfdfb);border-color:#dbe4dd;box-shadow:0 4px 12px rgba(36,70,47,.045);padding:13px}
+    .metric::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#5f9471}
+    .metric:nth-child(2)::before{background:#4f8fa0}.metric:nth-child(3)::before{background:#a47a51}.metric:nth-child(4)::before{background:#78935c}
+    .metric strong{font-size:1.12rem;color:#183425}
+    .metric-main{color:#18492f;letter-spacing:-.03em}
+    .meter{height:11px;background:#e8efe9;box-shadow:inset 0 1px 2px rgba(28,60,39,.08)}
+    .meter>span{background:linear-gradient(90deg,#2b7953,#77a767)}
+
+    .market-grid{gap:14px}
+    .market-card{position:relative;overflow:hidden;border-radius:17px;padding:16px;border-color:#dde4de;box-shadow:0 8px 18px rgba(37,66,46,.055);background:linear-gradient(160deg,#fff,#f9fbf8)}
+    .market-card::after{content:"";position:absolute;width:86px;height:86px;border-radius:50%;right:-31px;bottom:-34px;background:rgba(51,111,68,.07)}
+    .market-card:nth-child(1){border-top:4px solid #41845d}.market-card:nth-child(2){border-top:4px solid #60799c}.market-card:nth-child(3){border-top:4px solid #5b9860}.market-card:nth-child(4){border-top:4px solid #986c4e}
+    .market-card h4{font-size:1rem;font-weight:800;color:#172f21}.market-card .big{color:#1a5638;letter-spacing:-.02em}.market-card .local{color:#4d5d54;font-weight:650}
+
+    .passport-head{position:relative;overflow:hidden;background:linear-gradient(135deg,#e4f2e8 0%,#f9fcf9 58%,#f7f1e8 100%);box-shadow:0 12px 30px rgba(35,72,47,.07)}
+    .passport-head::after{content:"";position:absolute;right:-18px;bottom:-36px;width:180px;height:130px;opacity:.12;background:linear-gradient(155deg,transparent 0 32%,#2d6b42 33% 45%,transparent 46% 53%,#78935c 54% 66%,transparent 67%),radial-gradient(ellipse at 75% 40%,#6a3a25 0 9%,transparent 10%)}
+    .passport-head h2{color:#173e29;font-size:1.45rem}
+    .passport-block{position:relative;overflow:hidden;box-shadow:0 7px 18px rgba(38,68,48,.045);border-color:#dce4de;background:linear-gradient(180deg,#fff,#fbfdfb)}
+    .passport-block::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#6e9b76}
+    .passport-block:nth-child(2)::before{background:#a47a51}.passport-block:nth-child(3)::before{background:#8270a1}.passport-block:nth-child(4)::before{background:#527e9d}
+    .passport-block h3{font-weight:800;color:#193226}
+    .row{padding:2px 0}.row strong{color:#17241d}.row span:first-child{color:#506258}
+
+    .qr-image,.qr-placeholder{box-shadow:0 9px 22px rgba(35,67,46,.07);border-color:#d5dfd8}
+    .qr-data-preview{background:linear-gradient(180deg,#fff,#fafcfb);color:#3f5248}
+
+    .scan-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#123c2b 0%,#1c5b40 55%,#2f714f 100%);box-shadow:0 16px 34px rgba(24,73,50,.17)}
+    .scan-hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 86% 18%,rgba(255,255,255,.10),transparent 27%),radial-gradient(circle at 70% 112%,rgba(202,155,103,.22),transparent 33%)}
+    .scan-hero::after{content:"";position:absolute;right:6px;bottom:-20px;width:145px;height:96px;opacity:.16;transform:rotate(-10deg);background:radial-gradient(ellipse at 28% 40%,white 0 8%,transparent 9%),radial-gradient(ellipse at 50% 60%,white 0 9%,transparent 10%),radial-gradient(ellipse at 73% 35%,white 0 8%,transparent 9%)}
+    .scan-icon{position:relative;z-index:1;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),0 8px 16px rgba(0,0,0,.10)}
+    .scan-copy,.scan-hero .scan-btn{position:relative;z-index:1}
+    .scan-copy h2{font-size:1.2rem;letter-spacing:-.01em}
+
+    dialog{border:1px solid rgba(255,255,255,.3);box-shadow:0 26px 70px rgba(12,33,21,.28)}
+    .dialog-head{background:linear-gradient(135deg,#f6faf6,#fff)}
+    .saved-item,.trace-card{box-shadow:0 5px 14px rgba(37,67,47,.045);background:linear-gradient(180deg,#fff,#fbfdfb)}
+    .buyer-badge{box-shadow:0 3px 8px rgba(31,106,74,.07)}
+    .install-bar{box-shadow:0 7px 18px rgba(31,106,74,.08)}
+    .footer-note{border-top:1px dashed #cfdcd2;padding-top:12px;color:#52645a}
+
+    #lote .card{background-image:radial-gradient(circle at 96% 8%,rgba(77,135,63,.10),transparent 105px)}
+    #ambiente .card:first-child{background-image:radial-gradient(circle at 96% 7%,rgba(56,131,103,.11),transparent 115px)}
+    #mujeres .card{background-image:radial-gradient(circle at 96% 8%,rgba(163,112,83,.10),transparent 105px)}
+    #calidad .card{background-image:radial-gradient(circle at 96% 8%,rgba(111,66,39,.10),transparent 105px)}
+    #variedad .card{background-image:radial-gradient(circle at 96% 8%,rgba(97,139,72,.10),transparent 105px)}
+    #mercado .card{background-image:radial-gradient(circle at 96% 8%,rgba(71,111,146,.08),transparent 105px)}
+
+    @media(max-width:720px){
+      body::before{background-size:70px 42px,86px 50px;opacity:.12}
+      .top{padding:15px;border-radius:19px}.brand h1{font-size:1.43rem}
+      .card{border-radius:17px}.market-card{border-radius:15px}
+      .scan-hero{border-radius:19px}
+      .app::before,.app::after{display:none}
+    }
+    @media(prefers-reduced-motion:reduce){.panel.active{animation:none}.btn{transition:none}}
+
+
+
+    /* ===== Super diseño premium: decoración visual únicamente ===== */
+    :root{--coffee:#6c3f28;--coffee-soft:#f4e9df;--leaf:#447b4c;--leaf-soft:#eaf2e6;--gold:#c6a065;--ink:#15231b}
+    .app{max-width:1040px;padding-top:22px}
+    .brand-cluster{display:flex;align-items:center;gap:15px;min-width:0;position:relative;z-index:1}
+    .app-logo{width:74px;height:74px;flex:0 0 74px;border-radius:24px;display:grid;place-items:center;background:linear-gradient(145deg,#fff,#eef5ed);border:1px solid #cadaca;box-shadow:0 12px 26px rgba(27,75,45,.16),inset 0 1px 0 #fff;padding:6px;position:relative}
+    .app-logo::after{content:"";position:absolute;inset:-5px;border-radius:28px;border:1px solid rgba(198,160,101,.28);pointer-events:none}
+    .app-logo svg{width:100%;height:100%;filter:drop-shadow(0 4px 5px rgba(18,55,33,.15))}
+    .top{align-items:center;background:linear-gradient(135deg,rgba(255,255,255,.985),rgba(239,247,238,.98) 62%,rgba(248,241,232,.96));border-color:#cfded2;box-shadow:0 18px 42px rgba(26,70,43,.10)}
+    .top::before{content:"";position:absolute;left:8px;right:8px;bottom:0;height:3px;border-radius:999px;background:linear-gradient(90deg,transparent,#5f956a 20%,#c6a065 52%,#7c4a31 78%,transparent);opacity:.65}
+    .brand h1{margin-top:1px}.brand p{max-width:560px}
+    .actions{position:relative;z-index:1}.actions .btn{backdrop-filter:blur(4px)}
+
+    .scan-hero{border:1px solid rgba(219,236,223,.18);box-shadow:0 19px 46px rgba(19,68,42,.20)}
+    .scan-hero::after{right:-3px;bottom:-25px;width:190px;height:125px;opacity:.19;background:radial-gradient(ellipse at 26% 43%,#fff 0 7%,transparent 8%),radial-gradient(ellipse at 47% 67%,#fff 0 8%,transparent 9%),radial-gradient(ellipse at 68% 38%,#fff 0 7%,transparent 8%),radial-gradient(ellipse at 89% 69%,#fff 0 6%,transparent 7%)}
+    .scan-icon{background:linear-gradient(145deg,rgba(255,255,255,.19),rgba(255,255,255,.08));font-size:1.85rem}
+    .scan-copy h2{font-size:1.25rem}.scan-copy small{font-weight:800;letter-spacing:.08em;color:#d9eadc}
+
+    .tabs{position:relative}.tabs::after{content:"";position:absolute;left:0;right:0;bottom:5px;height:1px;background:linear-gradient(90deg,transparent,#d3ded5 12%,#d3ded5 88%,transparent);z-index:-1}
+    .tab{background:rgba(255,255,255,.88);border-color:#d6e0d8}.tab.active{color:#17482d;background:linear-gradient(135deg,#edf6ed,#e5f0e4);border-color:#a8c9af;box-shadow:0 6px 16px rgba(36,90,50,.11)}
+
+    .card{padding:20px;border-radius:21px;box-shadow:0 14px 34px rgba(30,67,42,.075)}
+    .card::before{height:5px;background:linear-gradient(90deg,#2d724e 0%,#74a567 45%,#c5a064 72%,#7c4a31 100%)}
+    .section-title{font-size:1.15rem;color:#172d20;display:flex;align-items:center;gap:5px}.section-sub{font-size:.91rem}
+    .field{position:relative}.field label{font-size:.84rem;color:#20352a}.field input,.field select,.field textarea{background:linear-gradient(180deg,#fff,#fdfefc);border-color:#d6e0d8;border-radius:14px;min-height:48px;transition:border-color .16s ease,box-shadow .16s ease,background .16s ease}
+    .field input:focus,.field select:focus,.field textarea:focus{background:#fff;border-color:#6fa47e;box-shadow:0 0 0 4px rgba(47,112,72,.105),0 7px 17px rgba(25,70,42,.055)}
+    .check{border-radius:14px;padding:13px;background:linear-gradient(135deg,#fff,#f8fbf8)}
+    .check:has(input:checked){border-color:#bad3bf;background:linear-gradient(135deg,#f9fcf8,#eef6ec);box-shadow:inset 0 0 0 1px rgba(75,128,84,.05),0 4px 12px rgba(36,78,47,.045)}
+
+    #lote .card::after,#ambiente .card:first-child::after,#mujeres .card::after,#calidad .card::after,#variedad .card:first-child::after,#mercado .card:first-child::after{width:145px;height:145px;right:-36px;top:-40px;opacity:.75}
+    #lote .card::after{background:radial-gradient(ellipse at 44% 48%,rgba(72,127,77,.11) 0 16%,transparent 17%),radial-gradient(ellipse at 68% 26%,rgba(72,127,77,.09) 0 13%,transparent 14%),radial-gradient(ellipse at 76% 67%,rgba(111,67,39,.08) 0 10%,transparent 11%)}
+    #ambiente .card:first-child::after{background:radial-gradient(circle at 45% 45%,rgba(47,122,99,.10) 0 13%,transparent 14%),radial-gradient(circle at 72% 29%,rgba(47,122,99,.08) 0 10%,transparent 11%),radial-gradient(circle at 75% 67%,rgba(77,135,63,.08) 0 11%,transparent 12%)}
+    #mujeres .card::after{background:radial-gradient(circle at 48% 45%,rgba(169,113,83,.10) 0 13%,transparent 14%),radial-gradient(circle at 74% 64%,rgba(119,71,48,.08) 0 10%,transparent 11%)}
+    #calidad .card::after{background:radial-gradient(ellipse at 45% 50%,rgba(111,66,39,.11) 0 16%,transparent 17%),radial-gradient(ellipse at 70% 27%,rgba(111,66,39,.08) 0 11%,transparent 12%)}
+    #variedad .card:first-child::after{background:radial-gradient(ellipse at 45% 48%,rgba(97,139,72,.11) 0 16%,transparent 17%),radial-gradient(ellipse at 72% 30%,rgba(97,139,72,.08) 0 12%,transparent 13%)}
+    #mercado .card:first-child::after{background:radial-gradient(circle at 46% 46%,rgba(73,116,150,.09) 0 14%,transparent 15%),radial-gradient(circle at 73% 30%,rgba(73,116,150,.07) 0 11%,transparent 12%)}
+
+    .metric-grid{grid-auto-rows:1fr}.metric{border-radius:15px;padding:15px;background:linear-gradient(155deg,#fff,#f8fbf8)}
+    .metric::after{content:"";position:absolute;right:-18px;bottom:-20px;width:60px;height:60px;border-radius:50%;background:rgba(56,112,71,.055)}
+    .metric strong{font-size:1.17rem}.metric span{font-weight:650;color:#506158}
+    .meter{height:12px;border:1px solid #dde7df}.meter>span{box-shadow:0 0 12px rgba(47,121,79,.18)}
+
+    .market-card{min-height:132px;background:linear-gradient(155deg,#fff 0%,#fbfdfb 68%,#f5f8f4 100%)}
+    .market-card:nth-child(1){background-image:radial-gradient(circle at 91% 14%,rgba(65,132,93,.12),transparent 65px)}
+    .market-card:nth-child(2){background-image:radial-gradient(circle at 91% 14%,rgba(96,121,156,.12),transparent 65px)}
+    .market-card:nth-child(3){background-image:radial-gradient(circle at 91% 14%,rgba(91,152,96,.12),transparent 65px)}
+    .market-card:nth-child(4){background-image:radial-gradient(circle at 91% 14%,rgba(152,108,78,.12),transparent 65px)}
+    .market-card h4{font-size:1.02rem}.market-card .big{font-size:1.5rem}
+
+    .passport-head{padding:23px;border-radius:21px;border-color:#c8ddcf;box-shadow:0 15px 36px rgba(30,70,43,.09)}
+    .passport-head::before{content:"PVC";position:absolute;right:30px;top:22px;width:56px;height:56px;border:2px solid rgba(44,105,65,.14);border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:.72rem;letter-spacing:.08em;color:rgba(44,105,65,.22);transform:rotate(-10deg)}
+    .passport-block{border-radius:18px;padding:18px;box-shadow:0 9px 23px rgba(33,70,44,.055)}
+    .passport-block h3{font-size:1.03rem}.passport-grid .passport-block:nth-child(1){background-image:radial-gradient(circle at 95% 7%,rgba(116,73,45,.07),transparent 90px)}
+    .passport-grid .passport-block:nth-child(2){background-image:radial-gradient(circle at 95% 7%,rgba(70,132,75,.08),transparent 90px)}
+    .passport-grid .passport-block:nth-child(3){background-image:radial-gradient(circle at 95% 7%,rgba(135,102,151,.07),transparent 90px)}
+    .passport-grid .passport-block:nth-child(4){background-image:radial-gradient(circle at 95% 7%,rgba(70,110,144,.07),transparent 90px)}
+    .row{padding:4px 0;border-bottom:1px dashed rgba(205,216,208,.55)}.row:last-child{border-bottom:0}
+    .qr-block{background:linear-gradient(155deg,#fff,#f7fbf7)}.qr-wrap{position:relative}.qr-image,.qr-placeholder{border-radius:20px;border:1px solid #cddbd0;box-shadow:0 14px 30px rgba(28,73,44,.09)}
+
+    dialog{border-radius:22px;overflow:hidden}.dialog-head{padding:18px 20px;background:linear-gradient(135deg,#eef7ef,#fff 70%,#f9f2e9)}
+    .scanner-stage{border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 0 30px rgba(0,0,0,.25)}
+    .trace-card,.saved-item{border-radius:16px}
+    .install-bar{background:linear-gradient(135deg,#e9f5eb,#f8fbf8);border-color:#b9d2bf}
+
+    @media(max-width:720px){
+      .app{padding-top:14px}.brand-cluster{gap:11px}.app-logo{width:60px;height:60px;flex-basis:60px;border-radius:19px;padding:5px}.app-logo::after{border-radius:22px}
+      .top{align-items:flex-start}.brand h1{font-size:1.34rem}.brand small{font-size:.74rem}.brand p{font-size:.84rem}
+      .actions{width:100%;margin-top:4px}.card{padding:16px}.passport-head{padding:18px}.metric{padding:13px}
+    }
+
+    @media print{body{background:white}.top,.tabs,.nav,.actions,.install-bar,.no-print{display:none!important}.app{max-width:none;padding:0}.panel{display:none!important}#pasaporte.panel{display:block!important}.card,.passport-block,.passport-head{box-shadow:none;break-inside:avoid}}
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <section class="scan-hero no-print" aria-label="Escáner de trazabilidad para compradores">
+    <div class="scan-icon" aria-hidden="true">📷</div>
+    <div class="scan-copy">
+      <small>PARA QUIEN COMPRA EL CAFÉ</small>
+      <h2>Escanear trazabilidad</h2>
+      <p>Apuntá la cámara al QR de la bolsa y mirá el recorrido completo del lote.</p>
+    </div>
+    <button class="btn scan-btn" id="openScannerBtn" type="button">Abrir cámara</button>
+  </section>
+  <div class="top">
+    <div class="brand-cluster">
+      <div class="app-logo" aria-label="Logo Pasaporte Verde Café">
+        <svg viewBox="0 0 96 96" role="img" aria-hidden="true">
+          <defs>
+            <linearGradient id="pvcLogoBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#173f2a"/><stop offset="1" stop-color="#2e7048"/></linearGradient>
+            <linearGradient id="pvcBean" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9a6848"/><stop offset="1" stop-color="#5d321f"/></linearGradient>
+          </defs>
+          <circle cx="48" cy="48" r="44" fill="url(#pvcLogoBg)"/>
+          <circle cx="48" cy="48" r="39" fill="none" stroke="#e9d5ad" stroke-width="2.2" opacity=".95"/>
+          <path d="M31 58c-8-11-4-26 8-32 10 5 14 15 10 26-4 11-12 18-20 17 5-4 10-9 13-15 4-8 4-15 1-23" fill="url(#pvcBean)"/>
+          <path d="M52 29c14-1 23 5 27 16-12 4-23 1-30-9 4 12 1 23-7 31" fill="none" stroke="#a9cf78" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M55 31c8 4 14 9 18 15" fill="none" stroke="#dce9b6" stroke-width="2" stroke-linecap="round" opacity=".9"/>
+          <g fill="#f7f3e8">
+            <rect x="58" y="58" width="8" height="8" rx="1"/><rect x="70" y="58" width="8" height="8" rx="1"/><rect x="58" y="70" width="8" height="8" rx="1"/><rect x="70" y="70" width="3" height="3" rx=".5"/><rect x="75" y="74" width="5" height="5" rx=".5"/><rect x="69" y="76" width="3" height="3" rx=".5"/>
+          </g>
+        </svg>
+      </div>
+      <div class="brand">
+      <small>Aplicación móvil · funciona sin internet</small>
+      <h1>☕🌱 Pasaporte Verde Café</h1>
+      <p>Trazabilidad ambiental, social, varietal, de calidad y de mercado.</p>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn soft" id="saveBtn" type="button">💾 Guardar lote</button>
+      <button class="btn" id="savedBtn" type="button">📚 Mis lotes</button>
+      <button class="btn" id="newBtn" type="button">＋ Nuevo</button>
+    </div>
+  </div>
+
+  <div id="installBar" class="install-bar"><span><strong>Instalar Pasaporte Verde</strong><br><small>Agregala a la pantalla de inicio.</small></span><button id="installBtn" class="btn primary" type="button">Instalar</button></div>
+
+  <nav class="tabs" aria-label="Secciones">
+    <button class="tab active" data-tab="lote" type="button">1. Lote</button>
+    <button class="tab" data-tab="ambiente" type="button">2. Ambiente</button>
+    <button class="tab" data-tab="mujeres" type="button">3. Mujeres</button>
+    <button class="tab" data-tab="calidad" type="button">4. Calidad</button>
+    <button class="tab" data-tab="variedad" type="button">5. Variedad</button>
+    <button class="tab" data-tab="mercado" type="button">6. Mercado</button>
+    <button class="tab" data-tab="pasaporte" type="button">7. Pasaporte</button>
+  </nav>
+
+  <section id="lote" class="panel active">
+    <div class="card">
+      <h2 class="section-title">🌱 Identidad del lote</h2>
+      <p class="section-sub">Datos básicos para seguir el café desde su origen.</p>
+      <div class="grid2">
+        <div class="field"><label>Código del lote</label><input id="codigo" value="NIC-EST-001-26"></div>
+        <div class="field"><label>Productor</label><input id="productor" value="Carlos López"></div>
+        <div class="field"><label>Finca</label><input id="finca" value="El Porvenir"></div>
+        <div class="field"><label>Comunidad / departamento</label><input id="comunidad" value="Estelí"></div>
+        <div class="field"><label>Altitud (msnm)</label><input id="altitud" type="number" min="0" max="4000" value="1250"></div>
+        <div class="field"><label>Cantidad del lote (quintales)</label><input id="quintales" type="number" min="0" step="0.1" value="10"></div>
+        <div class="field"><label>Fecha de cosecha</label><input id="fechaCosecha" type="date"></div>
+        <div class="field"><label>Observación del productor</label><input id="observacion" placeholder="Ej. cosecha selectiva de cereza madura"></div>
+      </div>
+      <div class="nav"><span></span><button class="btn primary" data-next="ambiente" type="button">Continuar →</button></div>
+    </div>
+  </section>
+
+  <section id="ambiente" class="panel">
+    <div class="card">
+      <h2 class="section-title">♻️ Calculadora Agroecológica</h2>
+      <p class="section-sub">Compara prácticas anteriores y actuales para mostrar mejoras medibles.</p>
+      <div class="grid2">
+        <div class="field"><label>Agua antes (L)</label><input id="aguaAntes" type="number" min="0" value="100"></div>
+        <div class="field"><label>Agua actual (L)</label><input id="aguaActual" type="number" min="0" value="70"></div>
+        <div class="field"><label>Pulpa generada (kg)</label><input id="pulpaTotal" type="number" min="0" value="100"></div>
+        <div class="field"><label>Pulpa aprovechada (kg)</label><input id="pulpaUsada" type="number" min="0" value="85"></div>
+        <div class="field"><label>Fertilizante antes (kg)</label><input id="fertAntes" type="number" min="0" value="50"></div>
+        <div class="field"><label>Fertilizante actual (kg)</label><input id="fertActual" type="number" min="0" value="40"></div>
+      </div>
+
+      <div style="margin-top:18px;border-top:1px solid var(--line);padding-top:16px">
+        <h3 class="section-title">💧 Tratamiento de aguas mieles</h3>
+        <p class="section-sub">Registra cuánto efluente del beneficiado húmedo se trata y cuánto se reutiliza.</p>
+        <div class="grid3">
+          <div class="field"><label>Aguas mieles generadas (L)</label><input id="aguasMielGeneradas" type="number" min="0" value="1000"></div>
+          <div class="field"><label>Aguas mieles tratadas (L)</label><input id="aguasMielTratadas" type="number" min="0" value="900"></div>
+          <div class="field"><label>Agua tratada reutilizada (L)</label><input id="aguasMielReutilizadas" type="number" min="0" value="400"></div>
+        </div>
+        <div class="field" style="margin-top:14px"><label>Método principal de tratamiento</label><select id="metodoAguasMiel"><option value="sedimentacion">Sedimentación</option><option value="anaerobio">Biodigestor / tratamiento anaerobio</option><option value="aireacion">Aireación</option><option value="humedal">Humedal artificial</option><option value="combinado" selected>Sistema combinado</option><option value="otro">Otro</option></select></div>
+        <div class="checks" style="margin-top:14px">
+          <label class="check"><input id="separacionSolidos" type="checkbox" checked>🧺 Separación de sólidos</label>
+          <label class="check"><input id="sedimentacion" type="checkbox" checked>🪣 Sedimentación</label>
+          <label class="check"><input id="tratamientoAnaerobio" type="checkbox" checked>🛢️ Tratamiento anaerobio</label>
+          <label class="check"><input id="aireacion" type="checkbox">💨 Aireación</label>
+          <label class="check"><input id="humedalArtificial" type="checkbox" checked>🌿 Humedal artificial</label>
+          <label class="check"><input id="reusoAgua" type="checkbox" checked>🔄 Reutilización del agua</label>
+          <label class="check"><input id="descargaDirecta" type="checkbox">⚠️ Descarga directa sin tratamiento</label>
+        </div>
+        <div class="metric-grid">
+          <div class="metric"><span>💧 Aguas mieles tratadas</span><strong id="aguasTratadasOut">90%</strong></div>
+          <div class="metric"><span>🔄 Reutilización del agua tratada</span><strong id="aguasReusoOut">44%</strong></div>
+          <div class="metric"><span>🧪 Etapas de tratamiento</span><strong id="etapasAguasOut">5/6</strong></div>
+          <div class="metric"><span>🌱 Puntaje aguas mieles</span><strong id="aguasScoreOut">20/25</strong></div>
+        </div>
+      </div>
+
+      <div class="checks" style="margin-top:18px">
+        <label class="check"><input id="solar" type="checkbox" checked>☀️ Secado solar</label>
+        <label class="check"><input id="sombra" type="checkbox" checked>🌳 Café bajo sombra</label>
+        <label class="check"><input id="compost" type="checkbox" checked>♻️ Compostaje</label>
+        <label class="check"><input id="sinQuema" type="checkbox" checked>🔥 Sin quema de residuos</label>
+        <label class="check"><input id="cobertura" type="checkbox" checked>🍂 Cobertura del suelo</label>
+        <label class="check"><input id="bioinsumos" type="checkbox">🌿 Uso de bioinsumos</label>
+      </div>
+    </div>
+    <div class="card">
+      <span class="muted">Índice Agroecológico</span>
+      <div class="metric-main"><span id="agroScore">82</span><small>/100</small></div>
+      <div id="agroNivel" class="status good">Nivel alto</div>
+      <div class="meter"><span id="agroBar"></span></div>
+      <div class="metric-grid">
+        <div class="metric"><span>💧 Reducción de agua</span><strong id="aguaOut">30%</strong></div>
+        <div class="metric"><span>♻️ Residuos aprovechados</span><strong id="resOut">85%</strong></div>
+        <div class="metric"><span>🧪 Reducción fertilizante</span><strong id="fertOut">20%</strong></div>
+        <div class="metric"><span>💧 Aguas mieles tratadas</span><strong id="aguasOut">90%</strong></div>
+      </div>
+      <p class="footer-note">El índice pondera agua (15 pts), pulpa (15), fertilización (15), tratamiento de aguas mieles (25) y prácticas complementarias (30). No equivale a una certificación de carbono.</p>
+      <div class="nav"><button class="btn" data-next="lote" type="button">← Atrás</button><button class="btn primary" data-next="mujeres" type="button">Continuar →</button></div>
+    </div>
+  </section>
+
+  <section id="mujeres" class="panel">
+    <div class="card">
+      <h2 class="section-title">👩 Participación de las mujeres</h2>
+      <p class="section-sub">Registra dónde agregan valor y participan en decisiones del lote.</p>
+      <div class="grid2">
+        <div class="field"><label>Mujeres participantes</label><input id="mujeresTotal" type="number" min="0" value="6"></div>
+        <div class="field"><label>En control de calidad</label><input id="mujeresCalidad" type="number" min="0" value="2"></div>
+        <div class="field"><label>En gestión ambiental</label><input id="mujeresAmbiente" type="number" min="0" value="2"></div>
+        <div class="field"><label>En comercialización</label><input id="mujeresComercio" type="number" min="0" value="2"></div>
+        <div class="field"><label>En toma de decisiones</label><input id="mujeresDecision" type="number" min="0" value="2"></div>
+        <div class="field"><label>Mujeres capacitadas</label><input id="mujeresCapacitadas" type="number" min="0" value="4"></div>
+      </div>
+      <div class="field" style="margin-top:14px"><label>Actividad destacada</label><textarea id="actividad" rows="3">Selección de grano, control de calidad, compostaje y comercialización.</textarea></div>
+      <div class="nav"><button class="btn" data-next="ambiente" type="button">← Atrás</button><button class="btn primary" data-next="calidad" type="button">Continuar →</button></div>
+    </div>
+  </section>
+
+  <section id="calidad" class="panel">
+    <div class="card">
+      <h2 class="section-title">☕ Calidad del café</h2>
+      <p class="section-sub">Datos del procesamiento y del resultado real en taza.</p>
+      <div class="grid2">
+        <div class="field"><label>Proceso</label><select id="proceso"><option>Lavado</option><option>Natural</option><option>Honey</option><option>Anaeróbico</option></select></div>
+        <div class="field"><label>Humedad final (%)</label><input id="humedad" type="number" min="0" max="30" step="0.1" value="11"></div>
+        <div class="field"><label>Puntaje de catación</label><input id="puntaje" type="number" min="0" max="100" step="0.1" value="85"></div>
+        <div class="field"><label>Fermentación (horas)</label><input id="fermentacion" type="number" min="0" value="18"></div>
+      </div>
+      <div class="field" style="margin-top:14px"><label>Notas sensoriales reales</label><input id="notas" value="Chocolate, caramelo y cítricos"></div>
+      <div class="nav"><button class="btn" data-next="mujeres" type="button">← Atrás</button><button class="btn primary" data-next="variedad" type="button">Continuar →</button></div>
+    </div>
+  </section>
+
+  <section id="variedad" class="panel">
+    <div class="card">
+      <h2 class="section-title">🌿 Perfil de la variedad</h2>
+      <p class="section-sub">Características físicas, visuales y organolépticas esperadas.</p>
+      <div class="field"><label>Variedad del lote</label><select id="variedadSelect"><option value="caturra">Caturra</option><option value="bourbon">Borbón</option><option value="catuai">Catuaí</option><option value="pacamara">Pacamara</option><option value="typica">Típica</option><option value="maracaturra">Maracaturra</option></select></div>
+    </div>
+    <div class="card">
+      <div class="grid2">
+        <div>
+          <h3 class="section-title">Características físicas y visuales</h3>
+          <div class="rows" style="margin-top:12px">
+            <div class="row"><span>Porte</span><strong id="porte">Compacto</strong></div>
+            <div class="row"><span>Tamaño de grano</span><strong id="grano">Promedio</strong></div>
+            <div class="row"><span>Brote</span><strong id="brote">Verde</strong></div>
+            <div class="row"><span>Fruto</span><strong id="fruto">Rojo / amarillo</strong></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="section-title">Perfil organoléptico esperado</h3>
+          <div id="varCalidad" style="font-size:1.15rem;font-weight:800;margin-top:10px">Buena calidad</div>
+          <div id="varNotas" style="margin-top:8px"></div>
+          <div class="notice" style="margin-top:12px"><span class="muted">Perfil real:</span><br><strong id="perfilReal">85 pts · Chocolate, caramelo y cítricos</strong></div>
+        </div>
+      </div>
+      <p class="footer-note">El perfil esperado es orientativo. Altitud, suelo, madurez, proceso, secado y tueste pueden modificar la taza.</p>
+      <div class="nav"><button class="btn" data-next="calidad" type="button">← Atrás</button><button class="btn primary" data-next="mercado" type="button">Continuar →</button></div>
+    </div>
+  </section>
+
+  <section id="mercado" class="panel">
+    <div class="card">
+      <h2 class="section-title">📈 Inteligencia de mercado</h2>
+      <p class="section-sub">Compara el lote con referencias nacionales e internacionales en USD y córdobas por quintal.</p>
+      <div class="grid2">
+        <div class="field"><label>Tipo de cambio C$/USD</label><input id="tipoCambio" type="number" min="1" step="0.0001" value="36.6243"></div>
+        <div class="field"><label>Fecha de actualización de mercado</label><input id="fechaMercado" type="date"></div>
+        <div class="field"><label>Precio propuesto del café (USD/qq)</label><input id="precioLote" type="number" min="0" step="1" value="320"></div>
+        <div class="field"><label>Referencia nacional (USD/qq)</label><input id="precioNacional" type="number" min="0" step="0.01" value="272.50"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="market-grid">
+        <div class="market-card"><h4>🇳🇮 Nicaragua</h4><div id="nacUsd" class="big">US$272.50/qq</div><div id="nacNio" class="local">C$9,980/qq</div></div>
+        <div class="market-card"><h4>🌎 ICE Coffee C</h4><div class="field" style="margin-top:8px"><label>USD/qq</label><input id="internacional1" type="number" min="0" step="0.01" value="346.05"></div><div id="internacional1Nio" class="local">C$12,674/qq</div></div>
+        <div class="market-card"><h4>🇧🇷 Arábica Brasil</h4><div class="field" style="margin-top:8px"><label>USD/qq</label><input id="internacional2" type="number" min="0" step="0.01" value="401.95"></div><div id="internacional2Nio" class="local">C$14,721/qq</div></div>
+        <div class="market-card"><h4>🇬🇧 Robusta Londres</h4><div class="field" style="margin-top:8px"><label>USD/qq</label><input id="internacional3" type="number" min="0" step="0.01" value="161.25"></div><div id="internacional3Nio" class="local">C$5,906/qq</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="grid2">
+        <div><span class="muted">Nuestro café</span><div id="precioUsd" class="metric-main" style="font-size:2rem">US$320/qq</div><div id="precioNio" class="muted">C$11,720/qq</div></div>
+        <div><span class="muted">Valor estimado del lote</span><div id="totalUsd" class="metric-main" style="font-size:2rem">US$3,200</div><div id="totalNio" class="muted">C$117,198</div></div>
+      </div>
+      <div id="marketMessage" class="notice" style="margin-top:14px"></div>
+      <p class="footer-note">Las cotizaciones son editables y deben actualizarse con una fuente real antes de usarlas comercialmente.</p>
+      <div class="nav"><button class="btn" data-next="variedad" type="button">← Atrás</button><button class="btn primary" data-next="pasaporte" type="button">Generar Pasaporte →</button></div>
+    </div>
+  </section>
+
+  <section id="pasaporte" class="panel">
+    <div class="passport-head">
+      <small>Pasaporte Verde del Café Especial</small>
+      <h2 id="outCodigo">NIC-EST-001-26</h2>
+      <div id="outOrigen" class="muted">Carlos López · El Porvenir · Estelí</div>
+    </div>
+    <div class="passport-grid">
+      <div class="passport-block"><h3>☕ Calidad y variedad</h3><div class="rows"><div class="row"><span>Variedad</span><strong id="outVariedad">Caturra</strong></div><div class="row"><span>Altitud</span><strong id="outAltitud">1250 msnm</strong></div><div class="row"><span>Proceso</span><strong id="outProceso">Lavado</strong></div><div class="row"><span>Catación</span><strong id="outPuntaje">85 pts</strong></div><div class="row"><span>Humedad</span><strong id="outHumedad">11%</strong></div></div><div class="notice" style="margin-top:12px"><span class="muted">Notas reales:</span><br><strong id="outNotas">Chocolate, caramelo y cítricos</strong><br><span class="muted">Esperado por variedad:</span><br><span id="outSensorial">Dulce, cítrico, caramelo y chocolate.</span></div></div>
+      <div class="passport-block"><h3>🌱 Desempeño agroecológico</h3><div class="metric-main" style="font-size:2.2rem"><span id="outAgro">82</span><small>/100</small></div><div class="rows" style="margin-top:12px"><div class="row"><span>Reducción de agua</span><strong id="outAgua">30%</strong></div><div class="row"><span>Residuos aprovechados</span><strong id="outResiduos">85%</strong></div><div class="row"><span>Secado solar</span><strong id="outSolar">Sí</strong></div><div class="row"><span>Café bajo sombra</span><strong id="outSombra">Sí</strong></div><div class="row"><span>Sin quema</span><strong id="outQuema">Sí</strong></div><div class="row"><span>Aguas mieles tratadas</span><strong id="outAguasTratadas">90%</strong></div><div class="row"><span>Agua tratada reutilizada</span><strong id="outAguasReuso">44%</strong></div><div class="row"><span>Tratamiento</span><strong id="outMetodoAguas">Sistema combinado</strong></div></div></div>
+      <div class="passport-block"><h3>👩 Trazabilidad social</h3><div class="metric-main" style="font-size:2.2rem"><span id="outMujeres">6</span><small> mujeres</small></div><div class="rows" style="margin-top:12px"><div class="row"><span>Calidad</span><strong id="outMujeresCalidad">2</strong></div><div class="row"><span>Gestión ambiental</span><strong id="outMujeresAmbiente">2</strong></div><div class="row"><span>Comercialización</span><strong id="outMujeresComercio">2</strong></div><div class="row"><span>Decisiones</span><strong id="outMujeresDecision">2</strong></div></div><div id="outActividad" class="notice" style="margin-top:12px">Selección, control de calidad, compostaje y comercialización.</div></div>
+      <div class="passport-block"><h3>📈 Inteligencia de mercado</h3><div id="outPrecioUsd" class="metric-main" style="font-size:2rem">US$320/qq</div><div id="outPrecioNio" class="muted">C$11,720/qq</div><div class="rows" style="margin-top:12px"><div class="row"><span>🇳🇮 Referencia nacional</span><strong id="outNacional">US$272.50/qq</strong></div><div class="row"><span>🌎 ICE Coffee C</span><strong id="outICE">US$346.05/qq</strong></div><div class="row"><span>🇧🇷 Arábica Brasil</span><strong id="outBrasil">US$401.95/qq</strong></div><div class="row"><span>🇬🇧 Robusta Londres</span><strong id="outLondres">US$161.25/qq</strong></div><div class="row"><span>Valor total lote</span><strong id="outTotalUsd">US$3,200</strong></div><div class="row"><span>Total en C$</span><strong id="outTotalNio">C$117,198</strong></div><div class="row"><span>Actualización</span><strong id="outFechaMercado">—</strong></div></div></div>
+    </div>
+    <div class="passport-block qr-block" style="margin-top:14px">
+      <h3>📲 QR de trazabilidad del lote</h3>
+      <p class="footer-note">El QR contiene la información escrita del lote. Puede ser leído por otro teléfono sin tener instalada Pasaporte Verde. No incluye fotografías.</p>
+      <div class="qr-wrap">
+        <div id="qrPlaceholder" class="qr-placeholder">Generando QR del lote…</div>
+        <img id="qrImage" class="qr-image" alt="Código QR con la información del lote" hidden>
+        <div id="qrStatus" class="muted" style="font-size:.82rem">Conectate a internet para generar la imagen del QR.</div>
+        <div class="qr-actions no-print"><button class="btn primary" id="generateQrBtn" type="button">▦ Generar / actualizar QR</button><button class="btn" id="toggleQrDataBtn" type="button">Ver datos del QR</button></div>
+        <div id="qrDataPreview" class="qr-data-preview no-print" hidden></div>
+      </div>
+    </div>
+    <div class="notice" style="margin-top:14px">Este Pasaporte Verde documenta prácticas y datos del lote. El índice agroecológico no constituye certificación de CO₂e y los precios no son garantía de venta.</div>
+    <div class="nav no-print"><button class="btn" data-next="mercado" type="button">← Atrás</button><div style="display:flex;gap:8px;flex:1;justify-content:flex-end"><button class="btn" id="printBtn" type="button">🖨️ Imprimir</button><button class="btn primary" id="savePassportBtn" type="button">💾 Guardar lote</button></div></div>
+  </section>
+</div>
+
+
+<dialog id="scannerDialog">
+  <div class="dialog-head"><div><strong>📷 Escanear Pasaporte Verde</strong><div class="muted" style="font-size:.82rem">Colocá el QR dentro del recuadro.</div></div><button class="btn tiny" id="closeScannerBtn" type="button">✕</button></div>
+  <div class="scanner-body">
+    <div class="scanner-stage">
+      <video id="scannerVideo" autoplay playsinline muted aria-label="Vista de la cámara para escanear código QR"></video>
+      <div class="scan-frame" aria-hidden="true"></div>
+    </div>
+    <div id="scannerStatus" class="scanner-help" aria-live="polite">Preparando cámara…</div>
+    <div class="scanner-actions"><button class="btn" id="switchCameraBtn" type="button">↻ Cambiar cámara</button><button class="btn danger" id="stopScannerBtn" type="button">Detener cámara</button></div>
+  </div>
+</dialog>
+
+<dialog id="traceDialog">
+  <div class="dialog-head"><div><strong>☕ Trazabilidad del café</strong><div class="muted" style="font-size:.82rem">Información leída directamente del QR del lote.</div></div><button class="btn tiny" id="closeTraceBtn" type="button">✕</button></div>
+  <div class="dialog-body" id="traceResult"></div>
+</dialog>
+
+<dialog id="savedDialog">
+  <div class="dialog-head"><div><strong>Mis lotes guardados</strong><div class="muted" style="font-size:.82rem">Guardados en este dispositivo.</div></div><button class="btn tiny" id="closeDialog" type="button">✕</button></div>
+  <div class="dialog-body" id="savedList"></div>
+</dialog>
+
+<script>
+(()=>{
+  const $=id=>document.getElementById(id);
+  const tabs=[...document.querySelectorAll('.tab')];
+  const panels=[...document.querySelectorAll('.panel')];
+  const STORAGE='pasaporte_verde_cafe_lotes_v2';
+  const profiles={
+    caturra:{name:'Caturra',porte:'Compacto',grano:'Promedio',brote:'Verde',fruto:'Rojo / amarillo',quality:'Buena calidad',notes:['Caramelo','Chocolate','Cítricos','Fruta suave'],sensorial:'Dulce, cítrico, caramelo y chocolate.'},
+    bourbon:{name:'Borbón',porte:'Alto',grano:'Promedio',brote:'Verde',fruto:'Rojo',quality:'Muy buen potencial',notes:['Caramelo','Floral','Frutas','Chocolate'],sensorial:'Muy dulce, limpio, frutal y floral.'},
+    catuai:{name:'Catuaí',porte:'Compacto',grano:'Promedio',brote:'Verde',fruto:'Rojo / amarillo',quality:'Buena calidad',notes:['Chocolate','Caramelo','Nueces','Fruta madura'],sensorial:'Balanceado, dulce, chocolate y caramelo.'},
+    pacamara:{name:'Pacamara',porte:'Compacto',grano:'Muy grande',brote:'Verde / bronce',fruto:'Rojo',quality:'Calidad excepcional posible',notes:['Floral','Frutas tropicales','Cítricos','Chocolate'],sensorial:'Complejo, floral, frutal y de acidez brillante.'},
+    typica:{name:'Típica',porte:'Alto',grano:'Grande',brote:'Bronce',fruto:'Rojo',quality:'Muy buen potencial',notes:['Floral','Cítricos','Caramelo','Té'],sensorial:'Limpio, dulce, floral y cítrico.'},
+    maracaturra:{name:'Maracaturra',porte:'Variable',grano:'Grande / muy grande',brote:'Variable',fruto:'Rojo',quality:'Alto potencial',notes:['Floral','Frutas tropicales','Cítricos','Especias'],sensorial:'Complejo, aromático, floral y frutal.'}
+  };
+  const fieldIds=['codigo','productor','finca','comunidad','altitud','quintales','fechaCosecha','observacion','aguaAntes','aguaActual','pulpaTotal','pulpaUsada','fertAntes','fertActual','aguasMielGeneradas','aguasMielTratadas','aguasMielReutilizadas','metodoAguasMiel','separacionSolidos','sedimentacion','tratamientoAnaerobio','aireacion','humedalArtificial','reusoAgua','descargaDirecta','solar','sombra','compost','sinQuema','cobertura','bioinsumos','mujeresTotal','mujeresCalidad','mujeresAmbiente','mujeresComercio','mujeresDecision','mujeresCapacitadas','actividad','proceso','humedad','puntaje','fermentacion','notas','variedadSelect','tipoCambio','fechaMercado','precioLote','precioNacional','internacional1','internacional2','internacional3'];
+  function show(name){panels.forEach(p=>p.classList.toggle('active',p.id===name));tabs.forEach(t=>t.classList.toggle('active',t.dataset.tab===name));window.scrollTo({top:0,behavior:'smooth'});calc();if(name==='pasaporte')setTimeout(generateQR,80);}
+  tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.tab)));
+  document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.next)));
+  function n(id,max=1e12){let v=Number($(id).value);if(!Number.isFinite(v)||v<0)v=0;return Math.min(v,max)}
+  function red(a,b){return a>0?Math.max(0,Math.min(100,((a-b)/a)*100)):0}
+  function share(a,b){return b>0?Math.max(0,Math.min(100,(a/b)*100)):0}
+  function usd(v,d=0){return 'US$'+Number(v).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d})}
+  function nio(v){return 'C$'+Math.round(v).toLocaleString('en-US')}
+  function tags(items){return items.map(x=>'<span class="pill">'+x+'</span>').join('')}
+  function currentProfile(){return profiles[$('variedadSelect').value]||profiles.caturra}
+  function calc(){
+    const water=red(n('aguaAntes'),n('aguaActual')), waste=share(n('pulpaUsada'),n('pulpaTotal')), fert=red(n('fertAntes'),n('fertActual'));
+    const aguasTratadas=share(n('aguasMielTratadas'),n('aguasMielGeneradas'));
+    const aguasReuso=share(n('aguasMielReutilizadas'),n('aguasMielTratadas'));
+    const treatmentIds=['separacionSolidos','sedimentacion','tratamientoAnaerobio','aireacion','humedalArtificial','reusoAgua'];
+    const treatmentActive=treatmentIds.filter(id=>$(id).checked).length;
+    let wastewaterScore=Math.min(20,aguasTratadas*.20)+Math.min(5,aguasReuso*.05);
+    if($('descargaDirecta').checked) wastewaterScore=Math.max(0,wastewaterScore-10);
+    const ids=['solar','sombra','compost','sinQuema','cobertura','bioinsumos']; const active=ids.filter(id=>$(id).checked).length;
+    const agro=Math.round(Math.min(100,Math.min(15,water*.30)+Math.min(15,waste*.15)+Math.min(15,fert*.30)+Math.min(25,wastewaterScore)+active*5));
+    $('agroScore').textContent=agro;$('agroBar').style.width=agro+'%';$('agroNivel').textContent=agro>=80?'Nivel alto':agro>=60?'Nivel medio':agro>=40?'Nivel en desarrollo':'Nivel bajo';$('agroNivel').className='status '+(agro>=80?'good':agro>=60?'warn':'bad');
+    $('aguaOut').textContent=water.toFixed(0)+'%';$('resOut').textContent=waste.toFixed(0)+'%';$('fertOut').textContent=fert.toFixed(0)+'%';$('aguasOut').textContent=aguasTratadas.toFixed(0)+'%';
+    $('aguasTratadasOut').textContent=aguasTratadas.toFixed(0)+'%';$('aguasReusoOut').textContent=aguasReuso.toFixed(0)+'%';$('etapasAguasOut').textContent=treatmentActive+'/6';$('aguasScoreOut').textContent=Math.round(wastewaterScore)+'/25';
+    const p=currentProfile(); $('porte').textContent=p.porte;$('grano').textContent=p.grano;$('brote').textContent=p.brote;$('fruto').textContent=p.fruto;$('varCalidad').textContent=p.quality;$('varNotas').innerHTML=tags(p.notes);$('perfilReal').textContent=n('puntaje',100).toFixed(1).replace('.0','')+' pts · '+($('notas').value.trim()||'Sin notas registradas');
+    const fx=n('tipoCambio')||36.6243,nat=n('precioNacional'),i1=n('internacional1'),i2=n('internacional2'),i3=n('internacional3'),price=n('precioLote'),qq=n('quintales');
+    $('nacUsd').textContent=usd(nat,2)+'/qq';$('nacNio').textContent=nio(nat*fx)+'/qq';$('internacional1Nio').textContent=nio(i1*fx)+'/qq';$('internacional2Nio').textContent=nio(i2*fx)+'/qq';$('internacional3Nio').textContent=nio(i3*fx)+'/qq';$('precioUsd').textContent=usd(price,0)+'/qq';$('precioNio').textContent=nio(price*fx)+'/qq';$('totalUsd').textContent=usd(price*qq,0);$('totalNio').textContent=nio(price*qq*fx);
+    const diff=nat>0?((price-nat)/nat)*100:0; $('marketMessage').textContent=diff>5?'El precio propuesto está '+diff.toFixed(1)+'% por encima de la referencia nacional. La diferencia debe respaldarse con calidad, trazabilidad y atributos verificables.':diff<-5?'El precio propuesto está '+Math.abs(diff).toFixed(1)+'% por debajo de la referencia nacional.':'El precio propuesto está cercano a la referencia nacional.';
+    $('outCodigo').textContent=$('codigo').value.trim()||'Sin código';$('outOrigen').textContent=[$('productor').value.trim()||'Productor',$('finca').value.trim()||'Finca',$('comunidad').value.trim()||'Comunidad'].join(' · ');$('outVariedad').textContent=p.name;$('outAltitud').textContent=Math.round(n('altitud',4000))+' msnm';$('outProceso').textContent=$('proceso').value;$('outPuntaje').textContent=n('puntaje',100).toFixed(1).replace('.0','')+' pts';$('outHumedad').textContent=n('humedad',30).toFixed(1).replace('.0','')+'%';$('outNotas').textContent=$('notas').value.trim()||'Sin notas registradas';$('outSensorial').textContent=p.sensorial;$('outAgro').textContent=agro;$('outAgua').textContent=water.toFixed(0)+'%';$('outResiduos').textContent=waste.toFixed(0)+'%';$('outSolar').textContent=$('solar').checked?'Sí':'No';$('outSombra').textContent=$('sombra').checked?'Sí':'No';$('outQuema').textContent=$('sinQuema').checked?'Sí':'No';$('outAguasTratadas').textContent=aguasTratadas.toFixed(0)+'%';$('outAguasReuso').textContent=aguasReuso.toFixed(0)+'%';$('outMetodoAguas').textContent=$('metodoAguasMiel').selectedOptions[0]?.textContent||'No indicado';$('outMujeres').textContent=Math.round(n('mujeresTotal',999));$('outMujeresCalidad').textContent=Math.round(n('mujeresCalidad',999));$('outMujeresAmbiente').textContent=Math.round(n('mujeresAmbiente',999));$('outMujeresComercio').textContent=Math.round(n('mujeresComercio',999));$('outMujeresDecision').textContent=Math.round(n('mujeresDecision',999));$('outActividad').textContent=$('actividad').value.trim()||'Sin actividad registrada';$('outPrecioUsd').textContent=usd(price,0)+'/qq';$('outPrecioNio').textContent=nio(price*fx)+'/qq';$('outNacional').textContent=usd(nat,2)+'/qq';$('outICE').textContent=usd(i1,2)+'/qq';$('outBrasil').textContent=usd(i2,2)+'/qq';$('outLondres').textContent=usd(i3,2)+'/qq';$('outTotalUsd').textContent=usd(price*qq,0);$('outTotalNio').textContent=nio(price*qq*fx);$('outFechaMercado').textContent=$('fechaMercado').value||'Sin fecha';
+  }
+  function buildQrText(){
+    const p=currentProfile();
+    const water=red(n('aguaAntes'),n('aguaActual'));
+    const waste=share(n('pulpaUsada'),n('pulpaTotal'));
+    const fert=red(n('fertAntes'),n('fertActual'));
+    const aguasTratadas=share(n('aguasMielTratadas'),n('aguasMielGeneradas'));
+    const aguasReuso=share(n('aguasMielReutilizadas'),n('aguasMielTratadas'));
+    const ids=['solar','sombra','compost','sinQuema','cobertura','bioinsumos'];
+    const active=ids.filter(id=>$(id).checked).length;
+    const treatmentIds=['separacionSolidos','sedimentacion','tratamientoAnaerobio','aireacion','humedalArtificial','reusoAgua'];
+    const treatmentActive=treatmentIds.filter(id=>$(id).checked).length;
+    let wastewaterScore=Math.min(20,aguasTratadas*.20)+Math.min(5,aguasReuso*.05);if($('descargaDirecta').checked)wastewaterScore=Math.max(0,wastewaterScore-10);
+    const agro=Math.round(Math.min(100,Math.min(15,water*.30)+Math.min(15,waste*.15)+Math.min(15,fert*.30)+Math.min(25,wastewaterScore)+active*5));
+    const fx=n('tipoCambio')||36.6243, price=n('precioLote'), qq=n('quintales'), nat=n('precioNacional');
+    const practicas=[['Secado solar','solar'],['Café bajo sombra','sombra'],['Compostaje','compost'],['Sin quema','sinQuema'],['Cobertura de suelo','cobertura'],['Bioinsumos','bioinsumos']].filter(x=>$(x[1]).checked).map(x=>x[0]);
+    const etapas=[['Separación de sólidos','separacionSolidos'],['Sedimentación','sedimentacion'],['Tratamiento anaerobio','tratamientoAnaerobio'],['Aireación','aireacion'],['Humedal artificial','humedalArtificial'],['Reutilización','reusoAgua']].filter(x=>$(x[1]).checked).map(x=>x[0]);
+    const lines=[
+      'PASAPORTE VERDE CAFÉ',
+      'Lote: '+($('codigo').value.trim()||'Sin código'),
+      'Productor: '+($('productor').value.trim()||'No indicado'),
+      'Finca: '+($('finca').value.trim()||'No indicada'),
+      'Ubicación: '+($('comunidad').value.trim()||'No indicada'),
+      'Fecha cosecha: '+($('fechaCosecha').value||'No indicada'),
+      'Altitud: '+Math.round(n('altitud',4000))+' msnm',
+      'Cantidad: '+n('quintales')+' qq',
+      '',
+      'VARIEDAD Y CALIDAD',
+      'Variedad: '+p.name,
+      'Físico/visual: porte '+p.porte+', grano '+p.grano+', brote '+p.brote+', fruto '+p.fruto,
+      'Perfil esperado: '+p.sensorial,
+      'Proceso: '+$('proceso').value,
+      'Humedad: '+n('humedad',30)+'%',
+      'Catación: '+n('puntaje',100)+' pts',
+      'Fermentación: '+n('fermentacion')+' h',
+      'Notas reales: '+($('notas').value.trim()||'Sin notas'),
+      '',
+      'DESEMPEÑO AGROECOLÓGICO',
+      'Índice: '+agro+'/100',
+      'Reducción de agua: '+water.toFixed(0)+'%',
+      'Pulpa/residuos aprovechados: '+waste.toFixed(0)+'%',
+      'Reducción de fertilizante: '+fert.toFixed(0)+'%',
+      'Prácticas: '+(practicas.join(', ')||'Ninguna registrada'),
+      '',
+      'AGUAS MIELES',
+      'Generadas: '+n('aguasMielGeneradas')+' L',
+      'Tratadas: '+n('aguasMielTratadas')+' L ('+aguasTratadas.toFixed(0)+'%)',
+      'Reutilizadas: '+n('aguasMielReutilizadas')+' L ('+aguasReuso.toFixed(0)+'%)',
+      'Método: '+($('metodoAguasMiel').selectedOptions[0]?.textContent||'No indicado'),
+      'Etapas: '+(etapas.join(', ')||'Ninguna registrada'),
+      'Descarga directa: '+($('descargaDirecta').checked?'Sí':'No'),
+      '',
+      'TRAZABILIDAD SOCIAL',
+      'Mujeres participantes: '+Math.round(n('mujeresTotal',999)),
+      'Calidad: '+Math.round(n('mujeresCalidad',999))+' | Ambiente: '+Math.round(n('mujeresAmbiente',999))+' | Comercialización: '+Math.round(n('mujeresComercio',999))+' | Decisiones: '+Math.round(n('mujeresDecision',999)),
+      'Mujeres capacitadas: '+Math.round(n('mujeresCapacitadas',999)),
+      'Actividad: '+($('actividad').value.trim()||'No indicada'),
+      '',
+      'INTELIGENCIA DE MERCADO',
+      'Precio propuesto: '+usd(price,0)+'/qq | '+nio(price*fx)+'/qq',
+      'Referencia nacional: '+usd(nat,2)+'/qq',
+      'ICE Coffee C: '+usd(n('internacional1'),2)+'/qq',
+      'Arábica Brasil: '+usd(n('internacional2'),2)+'/qq',
+      'Robusta Londres: '+usd(n('internacional3'),2)+'/qq',
+      'Tipo de cambio: C$'+fx.toFixed(4)+'/US$1',
+      'Valor total: '+usd(price*qq,0)+' | '+nio(price*qq*fx),
+      'Fecha mercado: '+($('fechaMercado').value||'No indicada'),
+      '',
+      'Generado por Pasaporte Verde Café'
+    ];
+    return lines.join('\n');
+  }
+  function generateQR(){
+    const text=buildQrText();
+    $('qrDataPreview').textContent=text;
+    const img=$('qrImage'), ph=$('qrPlaceholder'), st=$('qrStatus');
+    const url='https://quickchart.io/qr?size=420&margin=2&ecLevel=L&text='+encodeURIComponent(text);
+    ph.hidden=false;img.hidden=true;ph.textContent='Generando QR del lote…';st.textContent='Generando código QR…';
+    img.onload=()=>{ph.hidden=true;img.hidden=false;st.textContent='QR listo. Escanéalo con otro teléfono para leer los datos del lote.'};
+    img.onerror=()=>{img.hidden=true;ph.hidden=false;ph.textContent='No se pudo cargar el QR';st.textContent='La ficha está lista, pero se necesita conexión a internet para generar la imagen del QR.'};
+    img.src=url;
+  }
+
+  let scannerStream=null, scannerTimer=null, scannerDetector=null, preferredFacing='environment';
+  function stopScanner(){
+    if(scannerTimer){clearTimeout(scannerTimer);scannerTimer=null}
+    if(scannerStream){scannerStream.getTracks().forEach(t=>t.stop());scannerStream=null}
+    const v=$('scannerVideo');if(v){v.srcObject=null}
+  }
+  async function scanLoop(){
+    const video=$('scannerVideo');
+    if(!scannerDetector||!video||!scannerStream)return;
+    try{
+      if(video.readyState>=2){
+        const codes=await scannerDetector.detect(video);
+        if(codes&&codes.length){
+          const raw=(codes[0].rawValue||'').trim();
+          if(raw){
+            $('scannerStatus').innerHTML='<span class="scan-success">QR detectado ✓</span>';
+            stopScanner();
+            if($('scannerDialog').open)$('scannerDialog').close();
+            showTraceability(raw);
+            return;
+          }
+        }
+      }
+    }catch(e){}
+    scannerTimer=setTimeout(scanLoop,260);
+  }
+  async function startScanner(){
+    const dlg=$('scannerDialog'),status=$('scannerStatus');
+    if(!window.BarcodeDetector){
+      dlg.showModal();
+      status.innerHTML='<span class="scan-error">Este Android no ofrece el lector QR del navegador.</span><br>Actualizá Android System WebView/Chrome o usá la cámara normal del teléfono para leer el QR.';
+      return;
+    }
+    if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+      dlg.showModal();status.innerHTML='<span class="scan-error">La cámara no está disponible en este modo.</span>';return;
+    }
+    dlg.showModal();status.textContent='Solicitando permiso para usar la cámara…';
+    try{
+      stopScanner();
+      let formats=[];try{formats=await BarcodeDetector.getSupportedFormats()}catch(e){}
+      if(formats.length&&!formats.includes('qr_code'))throw new Error('QR no compatible');
+      scannerDetector=new BarcodeDetector({formats:['qr_code']});
+      scannerStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:preferredFacing},width:{ideal:1280},height:{ideal:720}},audio:false});
+      $('scannerVideo').srcObject=scannerStream;
+      await $('scannerVideo').play();
+      status.textContent='Buscando el QR del Pasaporte Verde…';
+      scanLoop();
+    }catch(err){
+      stopScanner();
+      status.innerHTML='<span class="scan-error">No se pudo abrir la cámara.</span><br>Permití el acceso a Cámara para Pasaporte Verde e intentá de nuevo.';
+    }
+  }
+  function parseTrace(raw){
+    const sections={};let current='RESUMEN';sections[current]=[];
+    raw.split(/\r?\n/).forEach(line=>{
+      const s=line.trim();
+      if(!s)return;
+      if(['PASAPORTE VERDE CAFÉ','VARIEDAD Y CALIDAD','DESEMPEÑO AGROECOLÓGICO','AGUAS MIELES','TRAZABILIDAD SOCIAL','INTELIGENCIA DE MERCADO'].includes(s)){
+        current=s; if(!sections[current])sections[current]=[]; return;
+      }
+      const idx=s.indexOf(':');
+      if(idx>0) sections[current].push([s.slice(0,idx).trim(),s.slice(idx+1).trim()]);
+      else sections[current].push(['',s]);
+    });
+    return sections;
+  }
+  function traceCard(title,icon,rows){
+    if(!rows||!rows.length)return '';
+    return '<div class="trace-card"><h3>'+icon+' '+title+'</h3><div class="trace-lines">'+rows.map(r=>'<div class="trace-line"><span>'+escapeHtml(r[0]||'Dato')+'</span><strong>'+escapeHtml(r[1]||'')+'</strong></div>').join('')+'</div></div>';
+  }
+  function escapeHtml(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+  function showTraceability(raw){
+    const parsed=parseTrace(raw),res=$('traceResult');
+    const summary=parsed['RESUMEN']||[], general=parsed['PASAPORTE VERDE CAFÉ']||[];
+    const lot=(general.find(x=>x[0]==='Lote')||[])[1]||'Lote escaneado';
+    const producer=(general.find(x=>x[0]==='Productor')||[])[1]||'';
+    const farm=(general.find(x=>x[0]==='Finca')||[])[1]||'';
+    let html='<div class="trace-card"><div class="trace-kicker">PASAPORTE VERDE VERIFICADO POR QR</div><div class="trace-title">'+escapeHtml(lot)+'</div><div class="trace-sub">'+escapeHtml([producer,farm].filter(Boolean).join(' · '))+'</div><div class="buyer-badge">🌱 Trazabilidad disponible para el comprador</div></div>';
+    html+=traceCard('Origen del lote','🌱',general);
+    html+=traceCard('Variedad y calidad','☕',parsed['VARIEDAD Y CALIDAD']);
+    html+=traceCard('Desempeño agroecológico','♻️',parsed['DESEMPEÑO AGROECOLÓGICO']);
+    html+=traceCard('Procesamiento de aguas mieles','💧',parsed['AGUAS MIELES']);
+    html+=traceCard('Participación de las mujeres','👩',parsed['TRAZABILIDAD SOCIAL']);
+    html+=traceCard('Inteligencia de mercado','📈',parsed['INTELIGENCIA DE MERCADO']);
+    if(summary.length)html+=traceCard('Información','ℹ️',summary);
+    html+='<details class="trace-card"><summary style="cursor:pointer;font-weight:700">Ver contenido original del QR</summary><div class="trace-raw" style="margin-top:10px">'+escapeHtml(raw)+'</div></details>';
+    res.innerHTML=html;
+    $('traceDialog').showModal();
+  }
+
+  function serialize(){const data={};fieldIds.forEach(id=>{const el=$(id);data[id]=el.type==='checkbox'?el.checked:el.value});data.savedAt=new Date().toISOString();return data}
+  function apply(data){fieldIds.forEach(id=>{if(!(id in data))return;const el=$(id);if(el.type==='checkbox')el.checked=!!data[id];else el.value=data[id]});calc()}
+  function getSaved(){try{return JSON.parse(localStorage.getItem(STORAGE)||'[]')}catch{return []}}
+  function setSaved(arr){localStorage.setItem(STORAGE,JSON.stringify(arr))}
+  function saveLot(){const data=serialize();const code=(data.codigo||'SIN-CODIGO').trim();let arr=getSaved();const idx=arr.findIndex(x=>(x.codigo||'').trim()===code);if(idx>=0)arr[idx]=data;else arr.unshift(data);setSaved(arr);alert('Lote guardado en este dispositivo.')}
+  function renderSaved(){const arr=getSaved(),box=$('savedList');box.innerHTML='';if(!arr.length){box.innerHTML='<div class="notice">Todavía no hay lotes guardados.</div>';return}arr.forEach((x,i)=>{const item=document.createElement('div');item.className='saved-item';const info=document.createElement('div');info.innerHTML='<strong>'+(x.codigo||'Sin código')+'</strong><small>'+[x.productor||'Productor',x.finca||'Finca',x.comunidad||''].filter(Boolean).join(' · ')+'</small>';const act=document.createElement('div');act.className='saved-actions';const load=document.createElement('button');load.className='btn tiny soft';load.type='button';load.textContent='Abrir';load.addEventListener('click',()=>{apply(x);$('savedDialog').close();show('lote')});const del=document.createElement('button');del.className='btn tiny danger';del.type='button';del.textContent='Borrar';del.addEventListener('click',()=>{if(confirm('¿Borrar este lote?')){arr.splice(i,1);setSaved(arr);renderSaved()}});act.append(load,del);item.append(info,act);box.append(item)})}
+  function reset(){if(!confirm('¿Crear un lote nuevo? Los datos actuales no guardados se perderán.'))return;document.querySelectorAll('input,textarea').forEach(el=>{if(el.type==='checkbox')return;el.value=''});document.querySelectorAll('input[type=checkbox]').forEach(el=>el.checked=false);$('codigo').value='NIC-EST-002-26';$('altitud').value='1200';$('quintales').value='1';$('aguaAntes').value='100';$('aguaActual').value='100';$('pulpaTotal').value='0';$('pulpaUsada').value='0';$('fertAntes').value='0';$('fertActual').value='0';$('aguasMielGeneradas').value='0';$('aguasMielTratadas').value='0';$('aguasMielReutilizadas').value='0';$('metodoAguasMiel').value='combinado';$('separacionSolidos').checked=false;$('sedimentacion').checked=false;$('tratamientoAnaerobio').checked=false;$('aireacion').checked=false;$('humedalArtificial').checked=false;$('reusoAgua').checked=false;$('descargaDirecta').checked=false;$('proceso').value='Lavado';$('humedad').value='11';$('puntaje').value='80';$('variedadSelect').value='caturra';$('tipoCambio').value='36.6243';$('precioLote').value='0';$('precioNacional').value='0';$('internacional1').value='0';$('internacional2').value='0';$('internacional3').value='0';calc();show('lote')}
+  document.querySelectorAll('input,select,textarea').forEach(el=>{el.addEventListener('input',calc);el.addEventListener('change',calc)});
+  $('saveBtn').addEventListener('click',saveLot);$('savePassportBtn').addEventListener('click',saveLot);$('savedBtn').addEventListener('click',()=>{renderSaved();$('savedDialog').showModal()});$('closeDialog').addEventListener('click',()=>$('savedDialog').close());$('newBtn').addEventListener('click',reset);$('printBtn').addEventListener('click',()=>window.print());
+  $('generateQrBtn').addEventListener('click',generateQR);$('toggleQrDataBtn').addEventListener('click',()=>{const p=$('qrDataPreview');p.hidden=!p.hidden;$('toggleQrDataBtn').textContent=p.hidden?'Ver datos del QR':'Ocultar datos del QR'});
+  $('openScannerBtn').addEventListener('click',startScanner);$('closeScannerBtn').addEventListener('click',()=>{stopScanner();$('scannerDialog').close()});$('stopScannerBtn').addEventListener('click',()=>{stopScanner();$('scannerStatus').textContent='Cámara detenida.'});$('switchCameraBtn').addEventListener('click',()=>{preferredFacing=preferredFacing==='environment'?'user':'environment';startScanner()});$('closeTraceBtn').addEventListener('click',()=>$('traceDialog').close());$('scannerDialog').addEventListener('close',stopScanner);
+  const today=new Date().toISOString().slice(0,10);$('fechaMercado').value=today;
+  let deferredPrompt=null;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('installBar').classList.add('show')});$('installBtn').addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;$('installBar').classList.remove('show')});
+  if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+  calc();
+})();
+</script>
+</body>
+</html>
